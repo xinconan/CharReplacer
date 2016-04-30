@@ -42,6 +42,9 @@
             this.tbDestination = new System.Windows.Forms.TextBox();
             this.btnBegin = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -122,7 +125,7 @@
             // isRegex
             // 
             this.isRegex.AutoSize = true;
-            this.isRegex.Location = new System.Drawing.Point(111, 96);
+            this.isRegex.Location = new System.Drawing.Point(98, 96);
             this.isRegex.Name = "isRegex";
             this.isRegex.Size = new System.Drawing.Size(108, 16);
             this.isRegex.TabIndex = 5;
@@ -176,11 +179,43 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("宋体", 9F);
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(213, 97);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(221, 12);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "慎用！使用前请确保正则表达式的准确性";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 414);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 12);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "作者：xinconan";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(108, 414);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(329, 12);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "使用前请做好备份，由本程序引起的任何损失，本人概不负责";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 435);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnBegin);
             this.Controls.Add(this.tbDestination);
@@ -190,6 +225,7 @@
             this.Controls.Add(this.btnChoose);
             this.Controls.Add(this.tbPath);
             this.Controls.Add(this.cbFileType);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -220,6 +256,9 @@
         private System.Windows.Forms.TextBox tbDestination;
         private System.Windows.Forms.Button btnBegin;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

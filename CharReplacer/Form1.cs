@@ -16,6 +16,8 @@ namespace CharReplacer
         private String fileType;
         private String find;
         private String replace;
+        private bool useRegex;
+        private int total;
         public Form1()
         {
             InitializeComponent();
@@ -56,6 +58,8 @@ namespace CharReplacer
             fileType = cbFileType.Text;
             find = tbSource.Text;
             replace = tbDestination.Text;
+            useRegex = isRegex.Checked;
+            total = 0;
             
             if (fileType.Equals("") || fileType.EndsWith("."))
             {
@@ -92,7 +96,7 @@ namespace CharReplacer
                 //不包含子目录，只处理文件
                 doFiles(originPath);
             }
-            MessageBox.Show(cbFileType.Text);
+            MessageBox.Show("替换完成，共替换 "+total+" 个文件！");
         }
 
         /// <summary>
@@ -104,9 +108,19 @@ namespace CharReplacer
             if (fileType.Equals("*.*"))
             {
                 //所有类型文件
-                foreach (String file in Directory.GetFiles(path))
+                if (useRegex)
                 {
-                    doReplace(file);
+                    foreach (String file in Directory.GetFiles(path))
+                    {
+                        doReplaceWithRegex(file);
+                    }
+                }
+                else
+                {
+                    foreach (String file in Directory.GetFiles(path))
+                    {
+                        doReplace(file);
+                    }
                 }
             }
             else
@@ -118,7 +132,15 @@ namespace CharReplacer
                     //处理替换文件
                     if (file.EndsWith(fileType))
                     {
-                        doReplace(file);
+                        if (useRegex)
+                        {
+                            doReplaceWithRegex(file);
+                        }
+                        else
+                        {
+                            doReplace(file);
+                        }
+                        
                     }
                 }
             }
@@ -139,9 +161,9 @@ namespace CharReplacer
         }
 
         /// <summary>
-        /// 替换方法
+        /// 使用普通字符串替换
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="path">替换的文件路径</param>
         private void doReplace(string path)
         {
             string strContent = File.ReadAllText(path);
@@ -149,7 +171,28 @@ namespace CharReplacer
             {
                 strContent = strContent.Replace(find,replace);
                 File.WriteAllText(path, strContent);
+                total++;
             }
+        }
+
+        /// <summary>
+        /// 使用正则表达式进行替换
+        /// </summary>
+        /// <param name="path">替换的文件路径</param>
+        private void doReplaceWithRegex(string path)
+        {
+            string strContent = File.ReadAllText(path);
+            MatchCollection collection = Regex.Matches(strContent, find, RegexOptions.Multiline);
+            if (collection.Count <= 0)
+            {
+                return;
+            }
+            for (int i = 0; i < collection.Count; i++)
+            {
+                strContent = strContent.Replace(collection[i].Value, replace);
+            }
+            File.WriteAllText(path, strContent);
+            total++;
         }
     }
 }
