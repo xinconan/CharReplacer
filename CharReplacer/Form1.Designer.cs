@@ -1,6 +1,6 @@
 ﻿namespace CharReplacer
 {
-    partial class form1
+    partial class Form1
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
-            this.fileType = new System.Windows.Forms.ComboBox();
+            this.cbFileType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbPath = new System.Windows.Forms.TextBox();
             this.btnChoose = new System.Windows.Forms.Button();
@@ -53,10 +53,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "文件类型：";
             // 
-            // fileType
+            // cbFileType
             // 
-            this.fileType.FormattingEnabled = true;
-            this.fileType.Items.AddRange(new object[] {
+            this.cbFileType.FormattingEnabled = true;
+            this.cbFileType.Items.AddRange(new object[] {
             "*.*",
             "*.html",
             "*.htm",
@@ -66,11 +66,11 @@
             "*.java",
             "*.cs",
             "*.py"});
-            this.fileType.Location = new System.Drawing.Point(98, 10);
-            this.fileType.Name = "fileType";
-            this.fileType.Size = new System.Drawing.Size(332, 20);
-            this.fileType.TabIndex = 1;
-            this.fileType.Text = "*.*";
+            this.cbFileType.Location = new System.Drawing.Point(98, 10);
+            this.cbFileType.Name = "cbFileType";
+            this.cbFileType.Size = new System.Drawing.Size(332, 20);
+            this.cbFileType.TabIndex = 1;
+            this.cbFileType.Text = "*.*";
             // 
             // label2
             // 
@@ -96,6 +96,7 @@
             this.btnChoose.TabIndex = 3;
             this.btnChoose.Text = "浏览";
             this.btnChoose.UseVisualStyleBackColor = true;
+            this.btnChoose.Click += new System.EventHandler(this.btnChoose_Click);
             // 
             // cbSubPath
             // 
@@ -163,6 +164,7 @@
             this.btnBegin.TabIndex = 7;
             this.btnBegin.Text = "开始替换";
             this.btnBegin.UseVisualStyleBackColor = true;
+            this.btnBegin.Click += new System.EventHandler(this.btnBegin_Click);
             // 
             // btnLogout
             // 
@@ -172,8 +174,9 @@
             this.btnLogout.TabIndex = 8;
             this.btnLogout.Text = "退出";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // form1
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -186,7 +189,7 @@
             this.Controls.Add(this.cbSubPath);
             this.Controls.Add(this.btnChoose);
             this.Controls.Add(this.tbPath);
-            this.Controls.Add(this.fileType);
+            this.Controls.Add(this.cbFileType);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -194,7 +197,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "form1";
+            this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "字符替换器";
             this.ResumeLayout(false);
@@ -205,7 +208,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox fileType;
+        private System.Windows.Forms.ComboBox cbFileType;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbPath;
         private System.Windows.Forms.Button btnChoose;
